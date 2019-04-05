@@ -1,0 +1,103 @@
+import sys
+def printSubStr(st,low,high) : 
+    sys.stdout.write(st[low : high + 1]) 
+    sys.stdout.flush() 
+    return '' 
+  
+
+def longestPalSubstr(st) : 
+    
+    table = [[0 for x in range(n)] for y 
+                          in range(n)]  
+      
+
+    maxLength = 1
+    i = 0
+    while (i < n) : 
+        table[i][i] = True
+        i = i + 1
+      
+     
+    start = 0
+    i = 0
+    while i < n - 1 : 
+        if (st[i] == st[i + 1]) : 
+            table[i][i + 1] = True
+            start = i 
+            maxLength = 2
+        i = i + 1
+      
+     
+    k = 3
+    while k <= n : 
+        
+        i = 0
+        while i < (n - k + 1) : 
+              
+            
+            j = i + k - 1
+      
+             
+            if (table[i + 1][j - 1] and 
+                      st[i] == st[j]) : 
+                table[i][j] = True
+      
+                if (k > maxLength) : 
+                    start = i 
+                    maxLength = k 
+            i = i + 1
+        k = k + 1
+     
+  
+    return maxLength, start
+    
+  
+n=int(input())
+st=str(input())
+l,z = longestPalSubstr(st)
+
+print ( l )
+maxLength, start=longestPalSubstr(st)
+printSubStr(st, start, start + maxLength - 1)
+
+  
+#python code using brute force method
+
+
+
+
+/*length=int(input())
+word=str(input())
+subwordlist=[]
+for a in range(0,length):
+    for i in range(0,(length-a)):
+        subwordlist.append(word[a:a+i+1])
+
+      
+pallindrome=[]
+list1=[]
+for words in subwordlist:
+    for j in range(len(words),0,-1):
+        list1.append(words[j-1])
+        b=''.join(list1)
+    list1.clear()
+        
+    if words==b:
+        pallindrome.append(words)
+pallindrome.sort(key=len,reverse=True)
+last=[]
+last.append(pallindrome[0])
+maximum=len(pallindrome[0])
+for k in range(1,len(pallindrome)):
+    x=len(pallindrome[k])
+    if maximum==x:
+        last.append(pallindrome[k])
+    else:
+      pass
+   
+    
+    
+last.sort()   
+print(len(last[0]))
+print(last[0])
+*/
