@@ -1,0 +1,44 @@
+#simple code to find the primesquare(a sequence which contains square number next to prime or vice versa) of the input list.
+#suppose   primesquare([4,5,16,101,64]) returns me True and primesquare([5,16,101,36,27]) returns me False!
+
+
+
+def primesquare(l):
+    count =0
+    if (len(l)==1):
+        return True
+    else:
+        for i in range(0,len(l),2):
+            
+            if (isprime(l[i]==True)):
+                count =count+1
+            elif  (issquare(l[i])==True):
+                   count =count+1
+                 
+        
+            
+        for j in range(1,len(l),2):
+            if (issquare(l[j])==True):
+                count =count+1
+            elif(isprime(l[j])==True):
+                 count =count+1
+                
+        if (count==len(l)):
+            return True
+        else:
+            return False
+def isprime(a):
+    for i in range(2,a):
+        if a%i==0:
+            return False
+        else:
+            return True
+
+
+def issquare(b):
+ 
+    root = int (b**(1/2))
+    if int(root) ** 2 == int(b):
+        return True
+    else:
+        return False 
